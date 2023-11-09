@@ -1,0 +1,105 @@
+﻿@using AVisit.Models
+@model AVisit.Models.Home_location_model
+@*@model  List<location>*@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .choose {
+            font-size: 90px;
+            background: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-family: 'Century Gothic';
+            font-weight: 500;
+        }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 30px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .where_visit {
+            font-size: 60px;
+            color: orange;
+        }
+        input{
+            background-color:navajowhite;
+            font-size:50px;
+            border-radius:30px;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="video-background">
+        <source src="~/video/bv1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="content">
+        <!-- Your content goes here -->
+        <p class="choose">
+            <b>Choose Your Locations</b>
+        </p>
+        <h1 class="where_visit"><b>Where you want to visit</b></h1>
+        <div>
+            @using (Html.BeginForm())
+            {
+                @Html.DropDownList("DropdownList", ViewBag.DropdownList as SelectList, "Location", new { @class = "dropbtn", @id = "dropdown" })
+                <input type="submit" class="submit" value="Go">
+            }
+        </div>
+    </div>
+    
+        @*<select id="myDropdown">
+            <option value="Select Location">select location</option>
+            @foreach (var item in Model)
+            {
+                <option value="Select Location">@item.Location</option>
+            }
+        </select>*@
+      
+            @*//$(document).ready(function () {
+            //    $('#myDropdown').change(function () {
+            //        var selectedValue = $(this).val();
+
+            //        // Do something with the selectedValue
+            //    });
+            //});*@
+
+            
+
+</body>
+</html>
